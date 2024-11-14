@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: "<router-outlet></router-outlet>"
+  template: "<app-admin-v1 />"
 })
 export class AppComponent {
-  title = 'vehicle-app-ui';
 }

@@ -1,0 +1,32 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer mode="side">
+    <app-side-nav></app-side-nav>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <mat-toolbar color="primary">
+
+      <button
+          mat-icon-button
+          class="icon"
+          (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+      </button>
+
+      <span>My App</span>
+
+      <span class="example-spacer"></span>
+
+      <button mat-icon-button
+          class="icon favorite-icon"
+          (click)="logout()">
+          <mat-icon>logout</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+</mat-drawer-container>

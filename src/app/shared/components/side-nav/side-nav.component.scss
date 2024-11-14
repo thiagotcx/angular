@@ -1,0 +1,15 @@
+.example-sidenav {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+.sidenav-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidenav-item-active {
+  background-color: #dfdfdf
+}

@@ -1,0 +1,35 @@
+<div class="example-sidenav">
+  <mat-list>
+    <div mat-subheader class="sidenav-header">
+      <mat-icon fontIcon="dashboard" color="primary"></mat-icon>
+      Principal
+    </div>
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="/dashboard" routerLinkActive="sidenav-item-active"
+        [routerLinkActiveOptions]="{exact: true}">
+        Dashboard
+      </a>
+    </mat-nav-list>
+
+    <mat-divider></mat-divider>
+
+    <div mat-subheader class="sidenav-header">
+      <mat-icon fontIcon="directions_car" color="primary"></mat-icon>
+      Veículo
+    </div>
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="/veiculo" routerLinkActive="sidenav-item-active"
+        [routerLinkActiveOptions]="{exact: true}">
+        Listagem
+      </a>
+    </mat-nav-list>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/veiculo/cadastrar" routerLinkActive="sidenav-item-active"
+        [routerLinkActiveOptions]="{exact: true}">
+        Cadastro
+      </a>
+    </mat-nav-list>
+  </mat-list>
+</div>
