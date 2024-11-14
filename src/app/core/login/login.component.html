@@ -1,0 +1,45 @@
+<p>login works!</p>
+
+<nav>
+    <a></a>
+</nav>
+<div>{{urlVehicle}}</div>
+
+<h1></h1>
+
+<span>teste</span>
+
+<a routerLink="{{urlVehicle}}">URL Vehicle</a>
+<br />
+
+<a [routerLink]="urlVehicle">URL Vehicle 2</a>
+<br />
+
+<div></div>
+
+<button (click)="navigateTo('/veiculo')">Ir para veiculo</button>
+
+<button routerLink="">Ir para veiculo</button>
+
+
+<br />
+<form class="example-form" [formGroup]="loginFormGroup">
+    <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        
+        <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        
+        <input type="password" matInput formControlName="password">
+    </mat-form-field>
+
+    {{ loginFormGroup.value | json }}
+
+    <button mat-raised-button 
+        type="button" color="primary" 
+        [disabled]="isFormInvalid()"
+        (click)="submit()" >Enviar</button>
+</form>
