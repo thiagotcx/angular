@@ -25,21 +25,29 @@
 <br />
 <form class="example-form" [formGroup]="loginFormGroup">
     <mat-form-field class="example-full-width">
-        <mat-label>Email</mat-label>
-        
-        <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+      <mat-label>Email</mat-label>
+
+      <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+
+      <mat-error>
+          {{getErrorMessage('email')}}
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
         <mat-label>Password</mat-label>
-        
+
         <input type="password" matInput formControlName="password">
+
+        <mat-error>
+            {{getErrorMessage('password')}}
+        </mat-error>
     </mat-form-field>
 
     {{ loginFormGroup.value | json }}
 
-    <button mat-raised-button 
-        type="button" color="primary" 
+    <button mat-raised-button
+        type="button" color="primary"
         [disabled]="isFormInvalid()"
         (click)="submit()" >Enviar</button>
 </form>
