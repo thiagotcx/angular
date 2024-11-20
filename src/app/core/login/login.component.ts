@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginRequest } from 'src/app/shared/models/login-request';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,47 +10,56 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(private router: Router) {
-    
-  }
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService
+  ) {}
 
-  public urlVehicle: string | any[] | null | undefined = "/veiculo"
-
-  public navigateTo(url: string): void {
-    this.router.navigate([url])
-  }
-
-
-  // PRIMEIRA IMPLEMENTACAO
-  public emailFormControl: FormControl = new FormControl(
-    "teste", 
-    [Validators.email, Validators.required]
-  );
-  public passwordFormControl: FormControl = new FormControl(
-    "", 
-    [Validators.required, Validators.minLength(5)]
-  );
-
-  // SEGUNDA IMPLEMENTACAO
-  public loginFormGroup: FormGroup = new FormGroup({
-    email: new FormControl(
-      "teste", 
-      [Validators.email, Validators.required]
-    ),
-    password: new FormControl(
-      "", 
-      [Validators.required, Validators.minLength(5)]
-    )
+  // TERCEIRA IMPLEMENTACAO
+  public loginForm: FormGroup = this.fb.group({
+    email: ['', [Validators.email, Validators.required]],
+    password: ['', [Validators.required, Validators.minLength(5)]]
   })
 
   // VALIDACOES
-  public submit(): void {
-    console.log(this.loginFormGroup.value)
-    this.loginFormGroup.reset()
+  public isFormInvalid(): boolean {
+    return this.loginForm.invalid
   }
 
-  public isFormInvalid(): boolean {
-    return this.loginFormGroup.invalid
+  public validateEmail(): string {
+    const email = this.loginForm.get('email')
+    
+    if (email?.getError('email') && !email.getError('required')) {
+      return 'Email está fora da formatação'
+    }
+
+    if (email?.getError('required')) {
+      return 'Email é obrigatório'
+    }
+
+    return ''
+  }
+
+  public validatePassword(): string {
+    if (this.loginForm.get('password')?.hasError) {
+      return 'Senha é obrigatório'
+    }
+
+    return ''
+  }
+
+  // ENVIO
+  public submit(): void {
+    const { email, password } = this.loginForm.value
+
+    // Chamar o service de autenticacao
+    this.authService.login({
+      email,
+      password
+    })
+
+    // Resetar o formulario
+    this.loginForm.reset()
   }
 
   
