@@ -1,0 +1,29 @@
+{
+  "vehicles": [
+    {
+      "vehicleId": "i5_02QT",
+      "licensePlate": "GHAS-2339",
+      "model": "Corola Cross",
+      "year": 2023,
+      "fipePrice": "120000",
+      "creationDate": "2024-05-19T07:22:52.151Z",
+      "id": "i5_02QT"
+    },
+    {
+      "licensePlate": "GTFS-4512",
+      "model": "Fiat Palio",
+      "year": 2015,
+      "fipePrice": "25000",
+      "creationDate": "2024-05-19T08:14:17.247Z",
+      "id": "s5Wh9DC"
+    }
+  ],
+  "customers": [],
+  "users": [
+    {
+      "email": "user@xpto.com",
+      "password": "$2a$10$SZlKXLijcyApHHvFNWd3x.wpscoWQ8VLYdsKoUUTX7zqhS/PQEkKW",
+      "id": 1
+    }
+  ]
+}
