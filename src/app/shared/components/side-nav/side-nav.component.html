@@ -1,0 +1,19 @@
+<mat-list role="list">
+    <div mat-subheader>Principal</div>
+    <mat-list-item (click)="navigateTo('/dashboard')">
+        <mat-icon matListItemIcon>folder</mat-icon>
+        <div matListItemTitle>Dashboard</div>
+    </mat-list-item>
+
+    <mat-divider></mat-divider>
+
+    <div mat-subheader>Veículos</div>
+    <mat-list-item (click)="navigateTo('/veiculo')">
+        <mat-icon matListItemIcon>folder</mat-icon>
+        <div matListItemTitle>Listagem</div>
+    </mat-list-item>
+    <mat-list-item (click)="navigateTo('/veiculo/cadastrar')">
+        <mat-icon matListItemIcon>folder</mat-icon>
+        <div matListItemTitle>Cadastro</div>
+    </mat-list-item>
+  </mat-list>

@@ -16,7 +16,6 @@ export const authGuard: CanActivateFn = (route, state) => {
   }
 
   console.error("Permissão negada")
-
   router.createUrlTree(['/entrar'])
   return false
 };

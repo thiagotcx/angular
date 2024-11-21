@@ -1,27 +1,30 @@
-<form class="example-form" [formGroup]="loginForm">
-    <mat-form-field class="example-full-width">
-        <mat-label>Email</mat-label>
-        <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
-        <mat-error>
-            {{validateEmail()}}
-        </mat-error>
-   
-    </mat-form-field>
+<div class="login">
+    
+    <form class="example-form" [formGroup]="loginForm">
+        
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/768px-Angular_full_color_logo.svg.png" />
 
-    <mat-form-field class="example-full-width">
-        <mat-label>Password</mat-label>
-        <input type="password" matInput formControlName="password">
-        <mat-error>
-            {{validatePassword()}}
-        </mat-error>
-    </mat-form-field>
 
-    <br />
-    {{ loginForm.value | json }}
-    <br />
-
-    <button mat-raised-button 
-        color="primary" 
-        [disabled]="isFormInvalid()"
-        (click)="submit()" >Enviar</button>
-</form>
+        <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+            <mat-error>
+                {{validateEmail()}}
+            </mat-error>
+       
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password">
+            <mat-error>
+                {{validatePassword()}}
+            </mat-error>
+        </mat-form-field>
+    
+        <button mat-raised-button 
+            color="primary" 
+            [disabled]="isFormInvalid()"
+            (click)="submit()" >Enviar</button>
+    </form>
+</div>
