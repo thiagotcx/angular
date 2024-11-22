@@ -28,7 +28,11 @@ export class AdminV1Component {
   public isAuth: boolean = false
 
   constructor(private authService: AuthService) {
-    this.isAuth = this.authService.getIsAuth()
+    this.authService
+      .getIsAuth()
+      .events
+      .subscribe((isAuth) => this.isAuth = isAuth)
   }
+  
 
 }

@@ -3,7 +3,12 @@ import { LoginRequest } from '../models/login-request';
 import { Router } from '@angular/router';
 import { ApplicationService } from './application.service';
 import { ApplicationHttpService } from './application-http.service';
-import { map } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
+
+type AuthState = {
+  value: boolean,
+  events: Observable<boolean>
+}
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +16,7 @@ import { map } from 'rxjs';
 export class AuthService {
 
   private isAuth: boolean = false
+  private isAuthEvents: BehaviorSubject<boolean> = new BehaviorSubject(false)
 
   constructor(
     private router: Router,
@@ -18,8 +24,11 @@ export class AuthService {
     private httpService: ApplicationHttpService
   ) { }
 
-  public getIsAuth(): boolean {
-    return this.isAuth
+  public getIsAuth(): AuthState {
+    return {
+      value: this.isAuth,
+      events: this.isAuthEvents.asObservable()
+    }
   }
 
   public login({ email, password }: LoginRequest): void {
@@ -30,6 +39,7 @@ export class AuthService {
               if (responseBody && responseBody.accessToken) {
                 this.applicationService.setToken(responseBody.accessToken)
                 this.isAuth = true
+                this.isAuthEvents.next(true)
                 this.router.navigate(['/dashboard'])
               }
             },
@@ -42,6 +52,7 @@ export class AuthService {
 
   public logout(): void {
     this.isAuth = false
+    this.isAuthEvents.next(false)
     this.router.navigate(['/entrar'])
   }
 }
